@@ -3,8 +3,6 @@ import logging
 from bs4 import BeautifulSoup  
 
 # Configura o logger para exibir mensagens de depuração
-logging.basicConfig(level=logging.DEBUG)
-
 
 def get_profile_urls_from_tournament():
     """Faz uma requisição ao endpoint do torneio para obter os profile_urls"""
@@ -28,10 +26,7 @@ def get_profile_urls_from_tournament():
 
 def vlr_players_details(profile_url: str):
     """Obtém os agentes e porcentagem de uso a partir da página de perfil"""
-    
-    # Log de depuração para verificar o profile_url recebido
-    logging.debug(f"Received profile_url: {profile_url}")
-    
+        
     if not profile_url:
         logging.error("Profile URL is missing.")
         return []
@@ -93,5 +88,4 @@ def vlr_players_details(profile_url: str):
             for agent, data in unique_agents.items()
         ]
     else:
-        logging.error(f"Falha ao acessar {profile_url}")
         return []
